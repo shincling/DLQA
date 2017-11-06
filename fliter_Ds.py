@@ -5,7 +5,7 @@ file=open('baike.txt').read()
 file_fliter=open('file_aim_total','w')
 cc=re.split('\d*?<->',file)
 cc=cc[1:]
-# cc=cc[:10]
+cc=cc[:10]
 idx_list=[]
 for idx,one in tqdm(enumerate(cc)):
     bb=''
@@ -28,5 +28,5 @@ for idx,one in tqdm(enumerate(cc)):
         bb+='\n'
         bb+=one
         bb+='\n\n\n\n'
-        file_fliter.write(bb)
+        # file_fliter.write(bb)
 

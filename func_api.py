@@ -1,5 +1,8 @@
 #coding=utf8
 import re
+import jieba
+import jieba.posseg as pseg
+import jieba.analyse
 
 def tf_idf(keyword,line,passage):
     '''这里留下了一个隐患，具体就是计算idf的时候，是否要把目标行去掉
@@ -33,3 +36,19 @@ def tf_idf(keyword,line,passage):
     idf=1.0/((df+1)**3)
     # print tf,idf
     return tf*idf
+
+def rela_extend(line):
+    postag=jieba.posseg.cut(line)
+    words=[]
+    postags=[]
+    for i in postag:
+        word=i.word
+        words.append(word)
+        postags.append(i.flag)
+        print word,
+    print '\n',postags
+
+question='世界上第一流的LED制造商是哪家？'
+rela_extend(question)
+
+
